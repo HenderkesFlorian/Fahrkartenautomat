@@ -4,54 +4,16 @@ class Fahrkartenautomat
 {
 	public static void main(String[] args)
 	{
-		begruessung();
 		Scanner tastatur = new Scanner(System.in);
 
+		begruessung();
 		int zuZahlenderBetrag = fahrkartenbestellungErfassen(tastatur);
 		int eingezahlterBetrag = fahrkartenBezahlen(tastatur, zuZahlenderBetrag);
 		fahrkartenAusgeben();
+		rueckgeldAusgeben(zuZahlenderBetrag, eingezahlterBetrag);
 
-		// 4 Rückgeldberechnung und -ausgabe
-		int rueckgabebetrag = eingezahlterBetrag - zuZahlenderBetrag;
-		if (rueckgabebetrag > 0)
-		{
-			System.out.printf("Der Rückgabebetrag in Höhe von %.2f Euro\n", rueckgabebetrag / 100.0);
-			System.out.println("wird in folgenden Münzen ausgezahlt:");
-
-			while (rueckgabebetrag >= 200)
-			{ // 2-Euro-Münzen
-				System.out.println("2 Euro");
-				rueckgabebetrag = rueckgabebetrag - 200;
-			}
-			while (rueckgabebetrag >= 100)
-			{ // 1-Euro-Münzen
-				System.out.println("1 Euro");
-				rueckgabebetrag = rueckgabebetrag - 100;
-			}
-			while (rueckgabebetrag >= 50)
-			{ // 50-Cent-Münzen
-				System.out.println("50 Cent");
-				rueckgabebetrag = rueckgabebetrag - 50;
-			}
-			while (rueckgabebetrag >= 20)
-			{ // 20-Cent-Münzen
-				System.out.println("20 Cent");
-				rueckgabebetrag = rueckgabebetrag - 20;
-			}
-			while (rueckgabebetrag >= 10)
-			{ // 10-Cent-Münzen
-				System.out.println("10 Cent");
-				rueckgabebetrag = rueckgabebetrag - 10;
-			}
-			while (rueckgabebetrag >= 5)
-			{ // 5-Cent-Münzen
-				System.out.println("5 Cent");
-				rueckgabebetrag = rueckgabebetrag - 5;
-			}
-		}
-
-		System.out.println("\nVergessen Sie nicht, den Fahrschein\n" + "vor Fahrtantritt entwerten zu lassen!\n"
-					   + "Wir wünschen Ihnen eine gute Fahrt.");
+		System.out.println("\nVergessen Sie nicht, den Fahrschein\n" + "vor Fahrtantritt entwerten zu lassen!");
+		System.out.println("Wir wünschen Ihnen eine gute Fahrt.");
 
 		tastatur.close();
 	}
@@ -152,5 +114,45 @@ class Fahrkartenautomat
 			 }
 		 }
 		 System.out.println("\n\n");
+	 }
+	 public static void rueckgeldAusgeben(int zuZahlenderBetrag, int eingezahlterBetrag)
+	 {
+		 int rueckgabebetrag = eingezahlterBetrag - zuZahlenderBetrag;
+		 if(rueckgabebetrag > 0)
+		 {
+			System.out.printf("Der Rückgabebetrag in Höhe von %.2f €\n", rueckgabebetrag / 100.0);
+			System.out.println("wird in folgenden Münzen ausgezahlt:");
+
+			while(rueckgabebetrag >= 200)
+			{ // 2-Euro-Münzen
+				 System.out.println("2 Euro");
+				 rueckgabebetrag = rueckgabebetrag - 200;
+			}
+			while(rueckgabebetrag >= 100)
+			{ // 1-Euro-Münzen
+				 System.out.println("1 Euro");
+				 rueckgabebetrag = rueckgabebetrag - 100;
+			}
+			while(rueckgabebetrag >= 50)
+			{ // 50-Cent-Münzen
+				 System.out.println("50 Cent");
+				 rueckgabebetrag = rueckgabebetrag - 50;
+			}
+			while(rueckgabebetrag >= 20)
+			{ // 20-Cent-Münzen
+				 System.out.println("20 Cent");
+				 rueckgabebetrag = rueckgabebetrag - 20;
+			}
+			while(rueckgabebetrag >= 10)
+			{ // 10-Cent-Münzen
+				 System.out.println("10 Cent");
+				 rueckgabebetrag = rueckgabebetrag - 10;
+			}
+			while(rueckgabebetrag >= 5)
+			{ // 5-Cent-Münzen
+				 System.out.println("5 Cent");
+				 rueckgabebetrag = rueckgabebetrag - 5;
+			}
+		 }
 	 }
 }
